@@ -48,12 +48,12 @@ app = FastAPI()
 # def greet_with_name(who: str):
 #     return f"Hello {who}!"
 @app.get("/hi")
-def greet(who: str = Query(None, description="Who to greet"), body: str = Body(None),  header: str = Header(None)):
-    print(f"{body=} {header=} {who=}")
+def greet(who: str = Query(None, description="Who to greet")):
+    print(f"{who=}")
     if who:
-        return f"Hello? {who}?"
+        return {"who": f"Hello? {who}?"}
     else:
-        return "Hello World"
+        return {"who": "Hello World"}
 
 # @app.post("/agent")
 # def get_agent(user_agent: str = Header(None, convert_underscores=False)):
